@@ -8,13 +8,13 @@ import { SearchPanel } from "./search-panel";
 const apiUrl = process.env.REACT_APP_API_URL;
 
 export const ProjectListScreen = () => {
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState([] as any);
   const [param, setParam] = useState({
     name: "",
     personId: "",
   });
+  const debounceParam = useDebounce(param, 200);
   const [list, setList] = useState([]);
-  const debounceParam = useDebounce(param, 2000);
   useEffect(() => {
     fetch(
       `${apiUrl}/projects?${qs.stringify(cleanObject(debounceParam))}`

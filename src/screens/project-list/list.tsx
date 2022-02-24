@@ -1,7 +1,20 @@
 import React from "react";
-import { listenerCount } from "process";
+import { User } from "./search-panel";
 
-export const List = ({ list, users }) => {
+interface Project {
+  id: string;
+  name: string;
+  personId: string;
+  pin: boolean;
+  organization: string;
+}
+
+interface ListProps {
+  list: Project[];
+  users: User;
+}
+
+export const List = ({ list, users }: ListProps) => {
   return (
     <table>
       <thead>
@@ -15,8 +28,7 @@ export const List = ({ list, users }) => {
           <tr key={project.id}>
             <td>{project.name}</td>
             <td>
-              {users.find((user) => user.id === project.personId)?.name ||
-                "未知"}
+              {users.find((user: User) => user.id === project.personId)?.name}
             </td>
           </tr>
         ))}
