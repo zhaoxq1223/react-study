@@ -1,7 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { cleanObject, useDebounce, useMount } from "utils";
-import * as qs from "qs";
 import { List } from "./list";
 import { SearchPanel } from "./search-panel";
 import { useHttp } from "utils/http";
