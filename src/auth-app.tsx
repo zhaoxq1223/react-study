@@ -5,9 +5,13 @@ import styled from "@emotion/styled";
 import { Row } from "components/lib";
 import { ReactComponent as SoftwareLogo } from "assets/software-logo.svg";
 import { Button, Dropdown, Menu } from "antd";
+import { useDocumentTitle } from "utils";
 
 export const AuthApp = () => {
   const { logout, user } = useAuth();
+
+  useDocumentTitle("项目列表", false);
+
   return (
     <Container>
       <Header between={true}>
