@@ -4,13 +4,13 @@ import { jsx } from "@emotion/react";
 import React from "react";
 import { Form, Input, Select } from "antd";
 export interface User {
-  [x: string]: any;
   id: string;
   name: string;
   email: string;
   title: string;
   organization: string;
   token: string;
+  [x: string]: any;
 }
 
 interface SearchPanelProps {
