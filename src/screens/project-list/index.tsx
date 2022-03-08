@@ -1,20 +1,18 @@
 import React from "react";
-import { useState } from "react";
-import { useDebounce } from "utils";
+import { useDebounce, useDocumentTitle } from "utils";
 import { List } from "./list";
 import { SearchPanel } from "./search-panel";
 import styled from "@emotion/styled";
 import { Typography } from "antd";
 import { useProjects } from "utils/project";
 import { useUsers } from "utils/user";
+import { useProjectSearchParams } from "./util";
 
 export const ProjectListScreen = () => {
-  const [param, setParam] = useState({
-    name: "",
-    personId: "",
-  });
-  const debounceParam = useDebounce(param, 200);
-  const { isLoading, error, data: list } = useProjects(debounceParam);
+  useDocumentTitle("项目列表", false);
+
+  const [param, setParam] = useProjectSearchParams();
+  const { isLoading, error, data: list } = useProjects(useDebounce(param, 200));
   const { data: users } = useUsers();
 
   return (
@@ -36,6 +34,8 @@ export const ProjectListScreen = () => {
     </Container>
   );
 };
+
+ProjectListScreen.whyDidYouRender = false;
 
 const Container = styled.div`
   padding: 3.2rem;
