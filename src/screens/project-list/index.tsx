@@ -44,5 +44,6 @@ export const ProjectListScreen = () => {
 ProjectListScreen.whyDidYouRender = false;
 
 const Container = styled.div`
+  width: 100%;
   padding: 3.2rem;
 `;
